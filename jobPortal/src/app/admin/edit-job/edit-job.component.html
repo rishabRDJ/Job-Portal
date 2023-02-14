@@ -1,0 +1,23 @@
+<div class="form-wrrap" *ngIf="jobDetail != undefined">
+  <form [formGroup]="editJobForm" (ngSubmit)="editJob()">
+    <input type="text" formControlName="jobId" [(ngModel)]="jobDetail.jobId" />
+    <input type="text" formControlName="jobTitle" [(ngModel)]="jobDetail.jobTitle" />
+    <input type="text" formControlName="postDate" [(ngModel)]="jobDetail.postDate" />
+    <input type="text" formControlName="role" [(ngModel)]="jobDetail.role" />
+    <input type="text" formControlName="responsibility" [(ngModel)]="jobDetail.responsibility" />
+    <input type="text" formControlName="compName" [(ngModel)]="jobDetail.compName" />
+    <input type="text" formControlName="exp" [(ngModel)]="jobDetail.exp" />
+    <input type="text" formControlName="salaryR" [(ngModel)]="jobDetail.salaryR" />
+    <input type="text" formControlName="noPos" [(ngModel)]="jobDetail.noPos" />
+    <input type="text" formControlName="location" [(ngModel)]="jobDetail.location" />
+    <input type="text" formControlName="skills" [(ngModel)]="jobDetail.skills" />
+    <input type="text" formControlName="degree" [(ngModel)]="jobDetail.degree" />
+    <input type="text" formControlName="compInfo" [(ngModel)]="jobDetail.compInfo" />
+    <input type="text" formControlName="empType" [(ngModel)]="jobDetail.empType" />
+    <input type="text" formControlName="indType" [(ngModel)]="jobDetail.indType" />
+    <input type="text" formControlName="keyword" [(ngModel)]="jobDetail.keyword" />
+    <input type="text" formControlName="jobDesc" [(ngModel)]="jobDetail.jobDesc" />
+
+    <input type="submit" value="Update Job" [disabled]="!editJobForm.valid" />
+  </form>
+</div>

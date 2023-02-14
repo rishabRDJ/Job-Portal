@@ -1,0 +1,38 @@
+.tab {
+  overflow: hidden;
+  width: 100%;
+  border: 1px solid #ccc;
+  background-color: #f1f1f1;
+}
+
+.tab button {
+  background-color: inherit;
+  float: left;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  padding: 14px 16px;
+  width: 50%;
+  transition: 0.3s;
+}
+
+.tab button:hover {
+  background-color: #ddd;
+}
+
+.tab button.active {
+  background-color: rgb(108, 108, 108);
+}
+
+.close {
+  background: rgb(221, 21, 21);
+  color: white;
+  border-radius: 50%;
+  height: 1.5rem;
+  width: 1.5rem;
+}
+
+#closeButton {
+  float: right;
+  text-align: center;
+}

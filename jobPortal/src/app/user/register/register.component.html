@@ -1,0 +1,546 @@
+<!-- <div class="form-wrrap">
+  <h3>User Register</h3>
+  <form [formGroup]="registerForm" (ngSubmit)="userRegister()">
+    <input
+      type="text"
+      placeholder="Enter Your Name"
+      formControlName="name"
+    />
+    <input
+      type="email"
+      placeholder="Enter Your Email"
+      formControlName="email"
+    />
+    <input
+      type="password"
+      placeholder="Enter Your Password"
+      formControlName="password"
+    />
+    <input type="submit" value="Register" [disabled]="!registerForm.valid" />
+  </form>
+</div> -->
+<!-- [ngClass]="{'singleClass' : true}" -->
+<div id="mainContent">
+  <ul class="tab col-md-12" role="group">
+    <li class="col-md-4" (click)="tab('tabContent1')" [ngClass]="{'col-md-6': !visible}">Personal</li>
+    <li class="col-md-4" (click)="tab('tabContent2')" *ngIf="visible">Employment</li>
+    <li class="col-md-4" (click)="tab('tabContent3')" [ngClass]="{'col-md-6': !visible}">Educational</li>
+  </ul>
+  <form [formGroup]="personalForm" (ngSubmit)="userRegister()">
+  <div id="tabContent1">
+    <h2>Personal</h2>
+    <!-- <form [formGroup]="personalForm" (ngSubmit)="userRegister()"> -->
+      <!-- name field -->
+      <div class="form-group row">
+        <label for="name" class="col-sm-2 col-form-label">Name</label>
+        <div class="col-sm-10">
+          <input
+            type="text"
+            class="form-control"
+            id="name"
+            placeholder="Enter your full name"
+            formControlName="name"
+          >
+        </div>
+        <div *ngIf="name!.touched && name!.invalid" class="alert alert-danger">
+          <div *ngIf="name!.errors!.required">Name is required</div>
+          <div *ngIf="name!.errors!.pattern">Valid name required</div>
+        </div>
+      </div>
+
+      <!-- email field -->
+      <div class="form-group row">
+        <label for="email" class="col-sm-2 col-form-label">Email ID</label>
+        <div class="col-sm-10">
+          <input
+            type="email"
+            class="form-control"
+            id="email"
+            placeholder="Enter your email ID"
+            formControlName="email"
+          >
+        </div>
+        <div *ngIf="email!.touched && email!.invalid" class="alert alert-danger">
+          <div *ngIf="email!.errors!.required">Email ID is required</div>
+          <div *ngIf="email!.errors!.email">Valid email ID required</div>
+        </div>
+      </div>
+
+      <!-- password field -->
+      <div class="form-group row">
+        <label for="password" class="col-sm-2 col-form-label">Password</label>
+        <div class="col-sm-10">
+          <input
+            type="password"
+            class="form-control"
+            id="password"
+            placeholder="Enter Password"
+            formControlName="password"
+          >
+        </div>
+        <div *ngIf="password!.touched && password!.invalid" class="alert alert-danger">
+          <div *ngIf="password!.errors!.required">Password is required</div>
+          <div *ngIf="password!.errors!.pattern">Valid password required</div>
+        </div>
+      </div>
+
+      <!-- mobile field -->
+      <div class="form-group row">
+        <label for="mobile" class="col-sm-2 col-form-label">Mobile Number</label>
+        <div class="col-sm-10">
+          <input
+            type="text"
+            class="form-control"
+            id="mobile"
+            placeholder="Enter Mobile Number"
+            formControlName="mobile"
+          >
+        </div>
+        <div *ngIf="mobile!.touched && mobile!.invalid" class="alert alert-danger">
+          <div *ngIf="mobile!.errors!.required">Mobile Number is required</div>
+          <div *ngIf="mobile!.errors!.pattern">Valid Mobile Number is required</div>
+          <div *ngIf="mobile!.errors!.minlength">10 characters only</div>
+          <div *ngIf="mobile!.errors!.maxlength">10 characters only</div>
+        </div>
+      </div>
+
+      <!-- address starts -->
+      <div class="form-group row">
+        <label for="address1" class="col-sm-2 col-form-label">Address</label>
+        <div class="col-sm-10">
+          <input type="text" class="form-control" id="address1" placeholder="Address 1" formControlName="address1">
+        </div>
+        <div *ngIf="address1!.touched && address1!.invalid" class="alert alert-danger">
+          <div *ngIf="address1!.errors!.required">Address is required</div>
+          <div *ngIf="address1!.errors!.maxlength">Maximum 150 characters</div>
+        </div>
+      </div>
+
+      <!-- address 2nd line -->
+      <div class="form-group row">
+        <label for="address2" class="col-sm-2 col-form-label"></label>
+        <div class="col-sm-10">
+          <input type="text" class="form-control" id="address2" placeholder="Address 2" formControlName="address2">
+        </div>
+        <div *ngIf="address2!.touched && address2!.invalid" class="alert alert-danger">
+          <div *ngIf="address2!.errors!.required">Address is required</div>
+          <div *ngIf="address2!.errors!.maxlength">Maximum 150 characters</div>
+        </div>
+      </div>
+
+      <!-- address 3rd line -->
+      <div class="form-row">
+        <div class="form-group offset-sm-2 col-sm-5">
+          <label for="city"></label>
+            <select name="city" id="city" class="form-control" formControlName="city">
+              <option value="" disabled selected style="color: gray;">Select City</option>
+              <option value="Chennai">Chennai</option>
+              <option value="Kolkata">Kolkata</option>
+              <option value="Pune">Pune</option>
+              <option value="Kochi">Kochi</option>
+            </select>
+          <div *ngIf="city!.touched && city!.invalid" class="alert alert-danger">
+            <div *ngIf="city!.errors!.required">City is required</div>
+          </div>
+        </div>
+        <div class="form-group col-sm-5">
+          <label for="state"></label>
+          <select name="state" id="state" class="form-control" formControlName="state">
+            <option value="" disabled selected style="color: gray;">Select State</option>
+            <option value="Tamil Nadu">Tamil Nadu</option>
+            <option value="West Bengal">West Bengal</option>
+            <option value="Maharashtra">Maharashtra</option>
+            <option value="Kerela">Kerela</option>
+          </select>
+          <div *ngIf="state!.touched && state!.invalid" class="alert alert-danger">
+            <div *ngIf="state!.errors!.required">State is required</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- address 4th line -->
+      <div class="form-row">
+        <div class="form-group offset-sm-2 col-sm-5">
+          <label for="postalCode"></label>
+          <div>
+            <input
+            type="text"
+            class="form-control"
+            id="postalCode"
+            placeholder="Enter your postal code"
+            formControlName="postalCode"
+            >
+          </div>
+          <div *ngIf="postalCode!.touched && postalCode!.invalid" class="alert alert-danger">
+            <div *ngIf="postalCode!.errors!.required">Postal Code is required</div>
+            <div *ngIf="postalCode!.errors!.pattern">Enter valid postal code</div>
+          </div>
+        </div>
+
+        <div class="form-group col-sm-5">
+          <label for="country"></label>
+          <div>
+            <input
+            type="text"
+            class="form-control"
+            id="country"
+            placeholder="Enter your country name"
+            formControlName="country"
+            >
+            <div *ngIf="country!.touched && country!.invalid" class="alert alert-danger">
+              <div *ngIf="country!.errors!.required">Country Name is required</div>
+              <div *ngIf="country!.errors!.pattern">Enter valid Country Name</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- experience filed -->
+      <div class="form-group row">
+        <label for="expYear" class="col-sm-2 col-form-label">Experience</label>
+        <div class="col-sm-5">
+          <input type="text" class="form-control" id="expYear" placeholder="Years of experience" formControlName="expYear">
+        </div>
+
+        <div class="col-sm-5">
+          <input type="text" class="form-control" id="expMonth" placeholder="Months of experience" formControlName="expMonth">
+        </div>
+      </div>
+      <div class="row">
+        <div class="offset-sm-2 col-sm-5">
+          <div *ngIf="expYear!.touched && expYear!.invalid" class="alert alert-danger">
+            <div *ngIf="expYear!.errors!.required">Experience Year is required</div>
+            <div *ngIf="expYear!.errors!.pattern">Enter valid years</div>
+            <div *ngIf="expYear!.errors!.maxlength">Enter valid years</div>
+          </div>
+        </div>
+        <div class="col-sm-5">
+          <div *ngIf="expMonth!.touched && expMonth!.invalid" class="alert alert-danger">
+            <div *ngIf="expMonth!.errors!.required">Experience Months is required</div>
+            <div *ngIf="expMonth!.errors!.pattern">Enter valid months</div>
+            <div *ngIf="expMonth!.errors!.max">Enter valid months</div>
+            <div *ngIf="expMonth!.errors!.maxlength">Enter valid months</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <label for="skills" class="col-sm-2 col-form-label">Skills</label>
+        <div class="col-sm-10">
+          <input
+            type="textarea"
+            class="form-control"
+            id="skills"
+            placeholder="Enter your skills"
+            formControlName="skills"
+          >
+        </div>
+      </div>
+      <div class="offset-sm-2">
+        <div *ngIf="skills!.touched && skills!.invalid" class="alert alert-danger">
+          <div *ngIf="skills!.errors!.required">Skills is required</div>
+          <div *ngIf="skills!.errors!.maxlength">Enter upto 200 characters</div>
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <label for="file" class="col-sm-2 col-form-label">Upload CV</label>
+        <div class="col-sm-10">
+          <input type="file" class="form-control-file" id="file" placeholder="Upload CV"> <!--formControlName="file"-->
+        </div>
+      </div>
+      <input type="btn btn-secondary float-md-right" type="button" (click)="next('personal')" value="Next">
+      <!-- <div *ngIf="file!.touched && file!.invalid" class="alert alert-danger">
+        <div *ngIf="file!.errors!.required">CV is required</div>
+      </div> -->
+      <!-- <input class="btn btn-primary" type="submit" [disabled]="!personalForm.valid" value="Register"> -->
+    <!-- </form> -->
+  </div>
+  <div id="tabContent2">
+    <h2>Employment</h2>
+    <!-- <form [formGroup]="personalForm" (ngSubmit)="userRegister()"> -->
+      <!-- Current Employer field -->
+      <div class="form-group row">
+        <label for="currEmp" class="col-sm-2 col-form-label">Current Employer</label>
+        <div class="col-sm-10">
+          <input
+            type="text"
+            class="form-control"
+            id="currEmp"
+            placeholder="Enter Current Employer"
+            formControlName="currEmp"
+          >
+        </div>
+        <div *ngIf="currEmp!.touched && currEmp!.invalid" class="alert alert-danger">
+          <div *ngIf="currEmp!.errors!.required">Current Employer is required</div>
+          <div *ngIf="currEmp!.errors!.pattern">Valid Current Employer required</div>
+        </div>
+      </div>
+
+      <!-- Destination field -->
+      <div class="form-group row">
+        <label for="currLocation" class="col-sm-2 col-form-label">Destination</label>
+        <div class="col-sm-10">
+          <input
+            type="text"
+            class="form-control"
+            id="currLocation"
+            placeholder="Enter your currLocation"
+            formControlName="currLocation"
+          >
+        </div>
+        <div *ngIf="currLocation!.touched && currLocation!.invalid" class="alert alert-danger">
+          <div *ngIf="currLocation!.errors!.required">Destination is required</div>
+        </div>
+      </div>
+
+      <!-- Job Description field -->
+      <div class="form-group row">
+        <label for="currJobDesc" class="col-sm-2 col-form-label">Job Description</label>
+        <div class="col-sm-10">
+          <input
+            type="text"
+            class="form-control"
+            id="currJobDesc"
+            placeholder="Enter Job Description"
+            formControlName="currJobDesc"
+          >
+        </div>
+        <div *ngIf="currJobDesc!.touched && currJobDesc!.invalid" class="alert alert-danger">
+          <div *ngIf="currJobDesc!.errors!.required">Job Description is required</div>
+          <div *ngIf="currJobDesc!.errors!.maxlength">Job Description should be in 200 characters</div>
+        </div>
+      </div>
+
+      <!-- Experience in months field -->
+      <div class="form-group row">
+        <label for="currExp" class="col-sm-2 col-form-label">Experience in months</label>
+        <div class="col-sm-10">
+          <input
+            type="text"
+            class="form-control"
+            id="currExp"
+            placeholder="Enter Experience in months"
+            formControlName="currExp"
+          >
+        </div>
+        <div *ngIf="currExp!.touched && currExp!.invalid" class="alert alert-danger">
+          <div *ngIf="currExp!.errors!.required">Experience is required</div>
+          <div *ngIf="currExp!.errors!.pattern">Valid Experience is required</div>
+          <div *ngIf="currExp!.errors!.maxlength">2 characters only</div>
+        </div>
+      </div>
+
+      <!-- Previous employer starts -->
+      <div class="form-group row">
+        <label for="prevEmp" class="col-sm-2 col-form-label">Previous Employer</label>
+        <div class="col-sm-10">
+          <input
+            type="text"
+            class="form-control"
+            id="prevEmp"
+            placeholder="Enter Previous Employer"
+            formControlName="prevEmp"
+          >
+        </div>
+        <div *ngIf="prevEmp!.touched && prevEmp!.invalid" class="alert alert-danger">
+          <div *ngIf="prevEmp!.errors!.required">Previous Employer is required</div>
+        </div>
+      </div>
+
+      <!-- Job desc 2nd field -->
+      <div class="form-group row">
+        <label for="prevJobDesc" class="col-sm-2 col-form-label">Job Description</label>
+        <div class="col-sm-10">
+          <input
+            type="text"
+            class="form-control"
+            id="prevJobDesc"
+            placeholder="Enter Previous Job Description"
+            formControlName="prevJobDesc"
+          >
+        </div>
+        <div *ngIf="prevJobDesc!.touched && prevJobDesc!.invalid" class="alert alert-danger">
+          <div *ngIf="prevJobDesc!.errors!.required">Previous Job Description is required</div>
+          <div *ngIf="prevJobDesc!.errors!.maxlength">Previous Job Description should be in 200 characters</div>
+        </div>
+      </div>
+
+      <!-- previous job experience line -->
+      <div class="form-group row">
+        <label for="prevExp" class="col-sm-2 col-form-label">Experience in months</label>
+        <div class="col-sm-10">
+          <input
+            type="text"
+            class="form-control"
+            id="prevExp"
+            placeholder="Enter Previous Job Experience"
+            formControlName="prevExp"
+          >
+        </div>
+        <div *ngIf="prevExp!.touched && prevExp!.invalid" class="alert alert-danger">
+          <div *ngIf="prevExp!.errors!.required">Previous Job experience is required</div>
+          <div *ngIf="prevExp!.errors!.maxlength">Previous Job experience should be in 2 characters</div>
+          <div *ngIf="prevExp!.errors!.pattern">Previous Job experience should be number only</div>
+        </div>
+      </div>
+      <input type="btn btn-secondary float-md-right" type="button" (click)="next('employment')" value="Next">
+      <!-- <input class="btn btn-primary" type="submit" [disabled]="!personalForm.valid" value="Save"> -->
+    <!-- </form> -->
+  </div>
+  <div id="tabContent3">
+    <h2>Education</h2>
+    <!-- <form [formGroup]="personalForm" (ngSubmit)="userRegister()"> -->
+      <!-- College/University field -->
+      <div class="form-group row">
+        <label for="college" class="col-sm-2 col-form-label">College/University</label>
+        <div class="col-sm-10">
+          <input
+            type="text"
+            class="form-control"
+            id="college"
+            placeholder="Enter name of college/university attended"
+            formControlName="college"
+          >
+        </div>
+        <div *ngIf="college!.touched && college!.invalid" class="alert alert-danger">
+          <div *ngIf="college!.errors!.required">Name of college/university attended required</div>
+        </div>
+      </div>
+
+      <!-- Destination field -->
+      <div class="form-group row">
+        <label for="collegeYear" class="col-sm-2 col-form-label">Year Passed On</label>
+        <div class="col-sm-10">
+          <select
+              formControlName="collegeYear"
+              id="collegeYear"
+              class="form-control">
+              <option value="" disabled selected style="color: gray;">Select Passing Year</option>
+              <option value="2020">2020</option>
+              <option value="2019">2019</option>
+              <option value="2018">2018</option>
+              <option value="2017">2017</option>
+              <option value="2016">2016</option>
+              <option value="2015">2015</option>
+              <option value="2014">2014</option>
+              <option value="2013">2013</option>
+              <option value="2012">2012</option>
+              <option value="2011">2011</option>
+              <option value="2010">2010</option>
+              <option value="2009">2009</option>
+              <option value="2008">2008</option>
+              <option value="2007">2007</option>
+              <option value="2006">2006</option>
+              <option value="2005">2005</option>
+              <option value="2004">2004</option>
+              <option value="2003">2003</option>
+              <option value="2002">2002</option>
+              <option value="2001">2001</option>
+              <option value="2000">2000</option>
+              <option value="1999">1999</option>
+          </select>
+        </div>
+        <div *ngIf="collegeYear!.touched && collegeYear!.invalid" class="alert alert-danger">
+          <div *ngIf="collegeYear!.errors!.required">Passing Year is required</div>
+        </div>
+      </div>
+
+      <!-- Graduated field -->
+      <div class="form-group row">
+        <label for="graduate" class="col-sm-2 col-form-label">Graduated</label>
+        <div class="col-sm-10">
+          <select
+              formControlName="graduate"
+              id="graduate"
+              class="form-control">
+              <option value="" disabled selected style="color: gray;">Select an option</option>
+              <option value="yes">Yes</option>
+              <option value="no">No</option>
+          </select>
+        </div>
+        <div *ngIf="graduate!.touched && graduate!.invalid" class="alert alert-danger">
+          <div *ngIf="graduate!.errors!.required">This field is required</div>
+        </div>
+      </div>
+
+      <!-- Graduate School field -->
+      <div class="form-group row">
+        <label for="gradSchool" class="col-sm-2 col-form-label">Graduate School</label>
+        <div class="col-sm-10">
+          <input
+            type="text"
+            class="form-control"
+            id="gradSchool"
+            placeholder="Name of Graduate School attended"
+            formControlName="gradSchool"
+          >
+        </div>
+        <div *ngIf="gradSchool!.touched && gradSchool!.invalid" class="alert alert-danger">
+          <div *ngIf="gradSchool!.errors!.required">Name of Graduate School attended required</div>
+        </div>
+      </div>
+
+      <!-- Number of years attended starts -->
+      <div class="form-group row">
+        <label for="schoolYear" class="col-sm-2 col-form-label">Number of years attended</label>
+        <div class="col-sm-10">
+          <input
+            type="text"
+            class="form-control"
+            id="schoolYear"
+            placeholder="In Year"
+            formControlName="schoolYear"
+          >
+        </div>
+        <div *ngIf="schoolYear!.touched && schoolYear!.invalid" class="alert alert-danger">
+          <div *ngIf="schoolYear!.errors!.required">Number of years is required</div>
+          <div *ngIf="schoolYear!.errors!.pattern">Number of years can be number only</div>
+          <div *ngIf="schoolYear!.errors!.maxlength">Number of years can be maximum 2 characters</div>
+        </div>
+      </div>
+
+      <!-- Skills/ Qualifications  field -->
+      <div class="form-group row">
+        <label for="qualification" class="col-sm-2 col-form-label">Skills/ Qualifications</label>
+        <div class="col-sm-10">
+          <input
+            type="text"
+            class="form-control"
+            id="qualification"
+            placeholder="Enter Skills"
+            formControlName="qualification"
+          >
+        </div>
+        <div *ngIf="qualification!.touched && qualification!.invalid" class="alert alert-danger">
+          <div *ngIf="qualification!.errors!.required">Skills/ Qualifications is required</div>
+          <div *ngIf="qualification!.errors!.maxlength">Skills/ Qualifications should be in maximum 300 characters</div>
+        </div>
+      </div>
+
+      <!-- previous job experience line -->
+      <div class="form-group row">
+        <label for="certificate" class="col-sm-2 col-form-label">Certification</label>
+        <div class="col-sm-10">
+          <input
+            type="text"
+            class="form-control"
+            id="certificate"
+            placeholder="Microsoft / Online Certification"
+            formControlName="certificate"
+          >
+        </div>
+        <div *ngIf="certificate!.touched && certificate!.invalid" class="alert alert-danger">
+          <div *ngIf="certificate!.errors!.required">Previous Job experience is required</div>
+          <div *ngIf="certificate!.errors!.maxlength">Previous Job experience should be maximum 300 characters</div>
+        </div>
+      </div>
+      <input class="btn btn-primary" type="submit" [disabled]="!personalForm.valid" value="Register">
+    <!-- </form> -->
+
+  </div>
+  </form>
+</div>
+
+
+

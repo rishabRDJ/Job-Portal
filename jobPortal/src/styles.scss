@@ -1,0 +1,20 @@
+// @import "~bootstrap/dist/css/bootstrap.css";
+@import "../node_modules/bootstrap/scss/bootstrap";
+
+body {
+  width: 1000px;
+  margin: auto;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+  box-sizing: border-box;
+  padding: 0;
+}
+
+// .fixed-header {
+//   width: 1000px;
+//   position: fixed;
+//   z-index: 999;
+// }
+
+.pointerCursor {
+  cursor: pointer;
+}

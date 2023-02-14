@@ -1,0 +1,146 @@
+<div class="pb-1" id="header" *ngIf="!userService.loggedIn()">
+  <div id="search-by" class="col-md-8 mt-5">
+    <h2 id="heroBanner">
+      <!-- <img src="../../../assets/logo.png" alt="logo" width="200px" /> -->
+      J<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+        <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
+      </svg>B
+    </h2>
+    <div id="searchBar">
+      <input type="text" class="m-1" placeholder="Enter Skill" [(ngModel)]="skillInput" />
+      <input type="text" class="m-1" placeholder="Enter Location" [(ngModel)]="locationInput" />
+      <input type="button" class="m-2" value="Search" (click)="search()" id="searchBtn" />
+    </div>
+  </div>
+  <app-login class="col-md-4 bg-light"></app-login>
+</div>
+
+<div class="pb-1" id="header" *ngIf="userService.loggedIn()">
+  <div id="search-by" class="col-md-12 mt-5">
+    <h2 id="heroBanner">
+      <!-- <img src="../../../assets/logo.png" alt="logo" width="200px" /> -->
+      J<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+        <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
+      </svg>B
+    </h2>
+    <div id="searchBar">
+      <input type="text" class="m-1" placeholder="Enter Skill" [(ngModel)]="skillInput" />
+      <input type="text" class="m-1" placeholder="Enter Location" [(ngModel)]="locationInput" />
+      <input type="button" class="m-2" value="Search" (click)="search()" id="searchBtn" />
+    </div>
+  </div>
+</div>
+
+<div class="border-top col-md-12">
+  <h2 class="font-weight-normal mt-4 ml-4">Hot Jobs</h2>
+  <div class="row my-5" *ngIf="posting$ | async as posts">
+    <div *ngFor="let post of posts" class="col-md-3">
+      <div class="card my-3 bg-light">
+        <div class="card-body pointerCursor" [routerLink]="['job-details']" [queryParams]="{_id: post._id}">
+          <h4 class="card-title">{{ post.jobTitle }}</h4>
+          <h5 class="card-subtitle mb-2 text-muted">{{ post.role }}</h5>
+          <!-- <p class="card-text">{{ post.jobDesc }}</p> -->
+          <p>
+            <span class="card-text border-right">{{ post.compName }} </span>
+            <span>|  {{ post.location }}</span>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container border-top py-3 my-5">
+  <h2 class="font-weight-normal">Select by Companies</h2>
+  <div class="row">
+    <img
+      class="col-md-3 pointerCursor"
+      src="../../../assets/intel-logo.png"
+      alt=""
+      (click)="onImageClick('intel')"
+    />
+    <img
+      class="col-md-3 pointerCursor"
+      src="../../../assets/samsung-logo.png"
+      alt=""
+      (click)="onImageClick('samsung')"
+    />
+    <img
+      class="col-md-3 pointerCursor"
+      src="../../../assets/cognizant-logo.png"
+      alt=""
+      (click)="onImageClick('Cognizant')"
+    />
+    <img
+      class="col-md-3 pointerCursor"
+      src="../../../assets/ibm-logo.png"
+      alt=""
+      (click)="onImageClick('ibm')"
+    />
+  </div>
+</div>
+<div class="album bg-light py-5 border-top">
+  <div class="careerTips container">
+    <h2 class="font-weight-normal">Career tips</h2>
+    <div class="row">
+      <div class="col-md-6">
+        <div class="card mb-4 box-shadow">
+          <div class="card-body">
+            <h5 class="card-text font-weight-normal">
+              01. Ready to work from home ?? here is how to be calm and be
+              productive
+            </h5>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="card mb-4 box-shadow">
+          <div class="card-body">
+            <h5 class="card-text font-weight-normal">
+              02. These best part time jobs do not require you to be a topper
+            </h5>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="card mb-4 box-shadow">
+          <div class="card-body">
+            <h5 class="card-text font-weight-normal">
+              03. 8 most popular part time jobs between students
+            </h5>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="card mb-4 box-shadow">
+          <div class="card-body">
+            <h5 class="card-text font-weight-normal">
+              04. 10 best skype interview tips for job seekers who want to
+              succeed
+            </h5>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="card mb-4 box-shadow">
+          <div class="card-body">
+            <h5 class="card-text font-weight-normal">
+              05. 5 work from home tips for those who genuinely want to work and
+              contribute
+            </h5>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="card mb-4 box-shadow">
+          <div class="card-body">
+            <h5 class="card-text font-weight-normal">
+              06. Top tips and resources to manage your career amid corona virus
+              pandemic
+            </h5>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

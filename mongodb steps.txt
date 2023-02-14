@@ -1,0 +1,3 @@
+#1 Run Mongo server - CD C:\Program Files\MongoDB\Server\4.2\bin> then Mongod
+#2 Run Mongo Shell - CD C:\Program Files\MongoDB\Server\4.2\bin> then mongo
+#3 Create Folder db  C:\Program Files\MongoDB\Server\4.2\bin> mongod.exe --dbpath "C:\data\db" 

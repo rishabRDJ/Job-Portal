@@ -1,0 +1,42 @@
+<!-- <div class="form-wrrap">
+  <h3>User Login</h3>
+  <form [formGroup]="loginForm" (ngSubmit)="userLogin()">
+    <input
+      type="email"
+      placeholder="Enter Your Email"
+      formControlName="email"
+    />
+    <input
+      type="password"
+      placeholder="Enter Your Password"
+      formControlName="password"
+    />
+    <input type="submit" value="Login" [disabled]="!loginForm.valid" />
+  </form>
+</div> -->
+
+<h3>User Login</h3>
+<form [formGroup]="loginForm" class="loginForm" (ngSubmit)="userLogin()">
+  <div class="form-group">
+    <input type="email" name="email" id="email" class="form-control" formControlName="email" placeholder="Enter email id"/>
+    <div class="errorMsg" *ngIf="!emailId?.valid && (emailId?.dirty || emailId?.touched)">
+      <div *ngIf="emailId!.errors!.required">Please enter user id</div>
+      <div *ngIf="emailId!.errors!.pattern">Please enter a valid user id</div>
+    </div>
+  </div>
+  <div class="form-group">
+    <input type="password" name="password" id="password" class="form-control" formControlName="password" placeholder="Enter password" />
+    <div class="errorMsg" *ngIf="!password?.valid && (password?.dirty || password?.touched)">
+      <div *ngIf="password!.errors!.required">Please enter password</div>
+      <div *ngIf="password!.errors!.minlength">
+        Please enter password of minimum 6 characters
+      </div>
+    </div>
+  </div>
+  <input type="submit" class="btn btn-danger btn-lg btn-block" value="Login" [disabled]="!loginForm.valid" />
+
+  <p class="container mt-2">
+    New User ? Register as&nbsp;
+    <a (click)="navigate(false)" class="pointerCursor">Fresher</a>&nbsp;&nbsp;/&nbsp;&nbsp;<a (click)="navigate(true)" class="pointerCursor">Experience</a>
+  </p>
+</form>

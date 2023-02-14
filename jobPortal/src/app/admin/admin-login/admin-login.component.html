@@ -1,0 +1,38 @@
+<div>
+  <div id="search-by" class="col-md-8 mt-5">
+    <h2 id="heroBanner">
+      <!-- <img src="../../../assets/logo.png" alt="logo" width="200px" /> -->
+      J<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+        <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
+      </svg>B
+    </h2>
+  </div>
+  <form [formGroup]="adminLoginForm" (ngSubmit)="adminLogin()">
+    <h3>Admin Login</h3>
+    <input
+      type="email"
+      placeholder="Enter Your Email"
+      formControlName="email"
+    />
+    <input
+      type="password"
+      placeholder="Enter Your Password"
+      formControlName="password"
+    />
+    <span [style.display]="isVisible? 'block' : 'none'">wrong username/password!</span>
+    <input class="btn btn-secondary" type="submit" value="Login" [disabled]="!adminLoginForm.valid" />
+  </form>
+</div>
+
+
+
+
+<!-- <form [routerLink]="/add-job">
+  <h2>admin login portal</h2>
+  <div>
+    <input type="text" [(ngModel)]="adminUsername" name="adminusername" placeholder="Enter Username">
+    <input type="password" [(ngModel)]="adminPassword" name="adminpassword" placeholder="Enter Password">
+  </div>
+  <span [style.display]="isVisible? 'block' : 'none'">wrong username/password!</span>
+  <button type="button" class="btn-primary" (click)= toDashboard()>submit</button>
+</form> -->

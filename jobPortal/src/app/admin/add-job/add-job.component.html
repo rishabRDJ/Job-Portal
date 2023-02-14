@@ -1,0 +1,252 @@
+<!-- <div class="form-wrrap">
+  <form [formGroup]="jobForm" (ngSubmit)="newJob()">
+    <input type="text" placeholder="Enter ID" formControlName="jobId"/>
+    <input type="text" placeholder="Enter Title" formControlName="jobTitle" />
+    <input type="text" placeholder="Enter Date" formControlName="postDate" />
+    <input type="text" placeholder="Enter Role" formControlName="role" />
+    <input type="text" placeholder="Enter Responsibility" formControlName="responsibility" />
+    <input type="text" placeholder="Enter Company Name" formControlName="compName" />
+    <input type="text" placeholder="Enter Experience" formControlName="exp" />
+    <input type="text" placeholder="Enter Salary Range" formControlName="salaryR" />
+    <input type="text" placeholder="Enter No. of Position" formControlName="noPos" />
+    <input type="text" placeholder="Enter Location" formControlName="location" />
+    <input type="text" placeholder="Enter Skills" formControlName="skills" />
+    <input type="text" placeholder="Enter Degree" formControlName="degree" />
+    <input type="text" placeholder="Enter Company Info" formControlName="compInfo" />
+    <input type="text" placeholder="Enter Employee Type" formControlName="empType" />
+    <input type="text" placeholder="Enter Industry Type" formControlName="indType" />
+    <input type="text" placeholder="Enter Keywords" formControlName="keyword" />
+    <input type="text" placeholder="Enter Job Description" formControlName="jobDesc" />
+
+    <input type="submit" value="Create Job" [disabled]="!jobForm.valid" />
+  </form>
+</div> -->
+
+
+<form [formGroup]="jobForm" (ngSubmit)="newJob()">
+  <div class="form-group mx-auto row">
+      <label class="col-sm-2 col-form-label" for="jobId">Job ID</label>
+      <input
+          formControlName="jobId"
+          id="jobId"
+          type="text"
+          placeholder="Enter Job ID"
+          class="form-control col-sm-9">
+          <div *ngIf="jobId!.touched && jobId!.invalid" class="alert alert-danger form-group offset-sm-2 col-sm-9">
+            <div *ngIf="jobId!.errors!.required">Job ID is required</div>
+            <div *ngIf="jobId!.errors!.minlength">Job ID can be minimum 12 characters</div>
+            <div *ngIf="jobId!.errors!.maxlength">Job ID can be maximum 12 characters</div>
+            <div *ngIf="jobId!.errors!.pattern">Job ID should be alphanumeric</div>
+          </div>
+  </div>
+  <div class="form-group mx-auto row">
+      <label class="col-sm-2 col-form-label" for="jobTitle">Job Title</label>
+      <input
+          formControlName="jobTitle"
+          id="jobTitle"
+          type="text"
+          placeholder="Enter Job Title"
+          class="form-control col-sm-9">
+          <div *ngIf="jobTitle!.touched && jobTitle!.invalid" class="alert alert-danger form-group offset-sm-2 col-sm-9">
+            <div *ngIf="jobTitle!.errors!.required">Job Title is required</div>
+            <div *ngIf="jobTitle!.errors!.pattern">Enter Valid Job Title</div>
+          </div>
+  </div>
+  <div class="form-group mx-auto row">
+    <label class="col-sm-2 col-form-label" for="postDate">Job Posted Date</label>
+    <input
+        formControlName="postDate"
+        id="postDate"
+        type="date"
+        class="form-control col-sm-9">
+        <div *ngIf="postDate!.touched && postDate!.invalid" class="alert alert-danger form-group offset-sm-2 col-sm-9">
+          <div *ngIf="postDate!.errors!.required">Date is required</div>
+        </div>
+  </div>
+  <div class="form-group mx-auto row">
+    <label class="col-sm-2 col-form-label" for="role">Role</label>
+    <input
+        formControlName="role"
+        id="role"
+        type="text"
+        placeholder="Enter Job Role"
+        class="form-control col-sm-9">
+        <div *ngIf="role!.touched && role!.invalid" class="alert alert-danger form-group offset-sm-2 col-sm-9">
+          <div *ngIf="role!.errors!.required">Role is required</div>
+          <div *ngIf="role!.errors!.pattern">Enter Valid Job Role</div>
+        </div>
+  </div>
+  <div class="form-group mx-auto row">
+    <label class="col-sm-2 col-form-label" for="responsibility">Responsibility</label>
+    <input
+        formControlName="responsibility"
+        id="responsibility"
+        type="textarea"
+        placeholder="Enter Responsibility"
+        class="form-control col-sm-9">
+        <div *ngIf="responsibility!.touched && responsibility!.invalid" class="alert alert-danger form-group offset-sm-2 col-sm-9">
+          <div *ngIf="responsibility!.errors!.required">Responsibility is required</div>
+          <div *ngIf="responsibility!.errors!.maxlength">Describe responsibility in 300 characters</div>
+        </div>
+  </div>
+ <div class="form-group mx-auto row">
+    <label class="col-sm-2 col-form-label" for="compName">Company Name</label>
+    <input
+        formControlName="compName"
+        id="compName"
+        type="textarea"
+        placeholder="Enter Company Name"
+        class="form-control col-sm-9">
+        <div *ngIf="compName!.touched && compName!.invalid" class="alert alert-danger form-group offset-sm-2 col-sm-9">
+          <div *ngIf="compName!.errors!.required">Company Name is required</div>
+          <div *ngIf="compName!.errors!.maxlength">Company Name should be within 100 characters</div>
+        </div>
+  </div>
+  <div class="form-group mx-auto row">
+    <label class="col-sm-2 col-form-label" for="exp">Experience</label>
+    <input
+        formControlName="exp"
+        id="exp"
+        type="textarea"
+        placeholder="Enter required Experience"
+        class="form-control col-sm-9">
+        <div *ngIf="exp!.touched && exp!.invalid" class="alert alert-danger form-group offset-sm-2 col-sm-9">
+          <div *ngIf="exp!.errors!.required">Experience is required</div>
+          <div *ngIf="exp!.errors!.pattern">Experience can only be numeric</div>
+        </div>
+  </div>
+  <div class="form-group mx-auto row">
+    <label class="col-sm-2 col-form-label" for="salaryR">Salary Range</label>
+    <input
+        formControlName="salaryR"
+        id="salaryR"
+        type="textarea"
+        placeholder="Enter Salary Range"
+        class="form-control col-sm-9">
+        <div *ngIf="salaryR!.touched && salaryR!.invalid" class="alert alert-danger form-group offset-sm-2 col-sm-9">
+          <div *ngIf="salaryR!.errors!.required">Salary Range is required</div>
+          <div *ngIf="salaryR!.errors!.pattern">Salary Range can only be numeric</div>
+        </div>
+  </div>
+  <div class="form-group mx-auto row">
+    <label class="col-sm-2 col-form-label" for="noPos">Number of Positions</label>
+    <input
+        formControlName="noPos"
+        id="noPos"
+        type="text"
+        placeholder="Enter number of positions available"
+        class="form-control col-sm-9">
+        <div *ngIf="noPos!.touched && noPos!.invalid" class="alert alert-danger form-group offset-sm-2 col-sm-9">
+          <div *ngIf="noPos!.errors!.required">Positions is required</div>
+          <div *ngIf="noPos!.errors!.pattern">Positions can only be numeric</div>
+        </div>
+  </div>
+  <div class="form-group mx-auto row">
+    <label class="col-sm-2 col-form-label" for="location">Location</label>
+    <select
+        formControlName="location"
+        id="location"
+        class="form-control col-sm-9">
+        <option value="" disabled selected style="color: gray;">Select location</option>
+        <option value="Chennai">Chennai</option>
+        <option value="Bangalore">Bangalore</option>
+        <option value="Kolkata">Kolkata</option>
+        <option value="Pune">Pune</option>
+    </select>
+        <div *ngIf="location!.touched && location!.invalid" class="alert alert-danger form-group offset-sm-2 col-sm-9">
+          <div *ngIf="location!.errors!.required">Location is required</div>
+        </div>
+  </div>
+  <div class="form-group mx-auto row">
+    <label class="col-sm-2 col-form-label" for="skills">Skills and Qualifications</label>
+    <input
+        formControlName="skills"
+        id="skills"
+        type="text"
+        placeholder="Enter skills and qualifications required"
+        class="form-control col-sm-9">
+        <div *ngIf="skills!.touched && skills!.invalid" class="alert alert-danger form-group offset-sm-2 col-sm-9">
+          <div *ngIf="skills!.errors!.required">Skills is required</div>
+        </div>
+  </div>
+  <div class="form-group mx-auto row">
+    <label class="col-sm-2 col-form-label" for="degree">Degree</label>
+    <input
+        formControlName="degree"
+        id="degree"
+        type="text"
+        placeholder="UG/PG"
+        class="form-control col-sm-9">
+        <div *ngIf="degree!.touched && degree!.invalid" class="alert alert-danger form-group offset-sm-2 col-sm-9">
+          <div *ngIf="degree!.errors!.required">Degree is required</div>
+        </div>
+  </div>
+  <div class="form-group mx-auto row">
+    <label class="col-sm-2 col-form-label" for="compInfo">Company Info</label>
+    <input
+        formControlName="compInfo"
+        id="compInfo"
+        type="text"
+        placeholder="About Company"
+        class="form-control col-sm-9">
+        <div *ngIf="compInfo!.touched && compInfo!.invalid" class="alert alert-danger form-group offset-sm-2 col-sm-9">
+          <div *ngIf="compInfo!.errors!.required">Degree is required</div>
+        </div>
+  </div>
+  <div class="form-group mx-auto row">
+    <label class="col-sm-2 col-form-label" for="empType">Employement Type</label>
+    <select
+        formControlName="empType"
+        id="empType"
+        class="form-control col-sm-9">
+        <option value="" disabled selected style="color: gray;">Select Employement Type</option>
+        <option value="fullTime">Full Time</option>
+        <option value="partTime">Part Time</option>
+    </select>
+        <div *ngIf="empType!.touched && empType!.invalid" class="alert alert-danger form-group offset-sm-2 col-sm-9">
+          <div *ngIf="empType!.errors!.required">Employement Type is required</div>
+        </div>
+  </div>
+  <div class="form-group mx-auto row">
+    <label class="col-sm-2 col-form-label" for="indType">Industry Type</label>
+    <select
+        formControlName="indType"
+        id="indType"
+        class="form-control col-sm-9">
+        <option value="" disabled selected style="color: gray;">Select Industry Type</option>
+        <option value="hardware">Hardware</option>
+        <option value="software">Software</option>
+    </select>
+        <div *ngIf="indType!.touched && indType!.invalid" class="alert alert-danger form-group offset-sm-2 col-sm-9">
+          <div *ngIf="indType!.errors!.required">Industry Type is required</div>
+        </div>
+  </div>
+  <div class="form-group mx-auto row">
+    <label class="col-sm-2 col-form-label" for="keyword">Search Keyword</label>
+    <input
+        formControlName="keyword"
+        id="keyword"
+        type="text"
+        placeholder="Enter Search Keyword"
+        class="form-control col-sm-9">
+        <div *ngIf="keyword!.touched && keyword!.invalid" class="alert alert-danger form-group offset-sm-2 col-sm-9">
+          <div *ngIf="keyword!.errors!.required">Search Keyword is required</div>
+          <div *ngIf="keyword!.errors!.pattern">Enter valid Search Keyword</div>
+        </div>
+  </div>
+  <div class="form-group mx-auto row">
+    <label class="col-sm-2 col-form-label" for="jobDesc">Job Description</label>
+    <input
+        formControlName="jobDesc"
+        id="jobDesc"
+        type="textarea"
+        placeholder="Enter Job Description"
+        class="form-control col-sm-9">
+        <div *ngIf="jobDesc!.touched && jobDesc!.invalid" class="alert alert-danger form-group offset-sm-2 col-sm-9">
+          <div *ngIf="jobDesc!.errors!.required">Description is required</div>
+          <div *ngIf="jobDesc!.errors!.maxlength">Describe Job in 500 characters</div>
+        </div>
+  </div>
+
+  <input type="submit" value="Create Job" [disabled]="!jobForm.valid" />
+</form>

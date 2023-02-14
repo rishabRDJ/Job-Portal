@@ -1,0 +1,13 @@
+<nav class="navbar navbar-light bg-light">
+  <div>
+    <span class="navbar-brand mb-0 h1">Admin Portal</span>
+  </div>
+  <div id="closeButton">
+    <button type ="button" (click)="logout()" class="close" routerLink="..">X</button>
+  </div>
+</nav>
+
+<div class="tab" role="group">
+  <button routerLinkActive="active btn-primary" class="btn-outline" routerLink="/admin/add-job">Create Job</button>
+  <button routerLinkActive="active btn-primary" class="btn-outline" routerLink="/admin/job-list">Job List</button>
+</div>

@@ -1,0 +1,47 @@
+h2 {
+  text-transform: capitalize;
+  margin: 1rem;
+}
+
+form {
+  border: 1px solid grey;
+  width: 40%;
+  margin: 5rem auto;
+  text-align: center;
+  padding: 1rem;
+}
+
+div {
+  text-align: center;
+  width: 70%;
+  margin: auto;
+}
+
+input {
+  display: block;
+  width: 100%;
+  margin-bottom: 0.5rem;
+  justify-content: center;
+}
+
+button {
+  padding: 0.1rem 3rem;
+  text-transform: capitalize;
+  border-radius: 5px;
+}
+
+span {
+  color: red;
+  display: block;
+  padding: 0.5rem;
+  text-transform: capitalize;
+}
+
+#header {
+  height: 270px;
+}
+
+#heroBanner {
+  text-align: center;
+  font-size: 3rem;
+}
